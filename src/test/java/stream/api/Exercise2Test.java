@@ -24,10 +24,6 @@ public class Exercise2Test extends ClassicOnlineStore {
     public void sortByAge() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create a stream with ascending ordered age values.
-         * Use {@link Stream#sorted} to sort them.
-         */
         Stream<Integer> sortedAgeStream = customerList.stream()
                 .map(Customer::getAge)
                 .sorted();
@@ -41,9 +37,6 @@ public class Exercise2Test extends ClassicOnlineStore {
     public void descSortByAge() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create a stream with descending ordered age values.
-         */
         Comparator<Integer> descOrder = (a, b) -> b.compareTo(a);
         Stream<Integer> sortedAgeStream = customerList.stream()
                 .map(Customer::getAge)
@@ -59,9 +52,6 @@ public class Exercise2Test extends ClassicOnlineStore {
     public void top3RichCustomer() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create a stream with top 3 rich customers using {@link Stream#limit} to limit the size of the stream
-         */
         Stream<String> top3RichCustomerStream = customerList.stream()
                 .sorted((c1, c2) -> Long.compare(c2.getBudget(), c1.getBudget()))
                 .map(Customer::getName)
@@ -76,9 +66,6 @@ public class Exercise2Test extends ClassicOnlineStore {
     public void distinctAge() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create a stream with distinct age values using {@link Stream#distinct}
-         */
         Stream<Integer> distinctAgeStream = customerList.stream()
                 .map(Customer::getAge)
                 .distinct();
@@ -92,10 +79,6 @@ public class Exercise2Test extends ClassicOnlineStore {
     public void itemsCustomersWantToBuy() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create a stream with items' names stored in {@link Customer.wantToBuy}
-         * Use {@link Stream#flatMap} to create a stream from each element of a stream.
-         */
         Function<Customer, Stream<Item>> getItemStream = c -> c.getWantToBuy().stream();
         Stream<String> itemStream = customerList.stream()
                 .flatMap(getItemStream)

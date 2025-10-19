@@ -16,9 +16,7 @@ public class Exercise6Test {
     @Easy
     @Test
     public void streamFromValues() {
-        /**
-         * Create a stream with string values "a" "b" "c" by using {@link Stream#of}
-         */
+
         Stream<String> abcStream = Stream.of("a", "b", "c");
 
         List<String> abcList = abcStream.collect(Collectors.toList());
@@ -28,9 +26,7 @@ public class Exercise6Test {
     @Easy
     @Test
     public void numberStream() {
-        /**
-         * Create a stream only with multiples of 3, starting from 0, size of 10, by using {@link Stream#iterate}
-         */
+
         Stream<Integer> numbers = Stream.iterate(0, n -> n + 3).limit(10);
 
         List<Integer> numbersList = numbers.collect(Collectors.toList());

@@ -26,9 +26,6 @@ public class Exercise8Test extends ClassicOnlineStore {
         List<Customer> customers = this.mall.getCustomerList();
         List<Shop> shops = this.mall.getShopList();
 
-        /**
-         * Create a set of item names that are in {@link Customer.wantToBuy} but not on sale in any shop.
-         */
         Set<String> itemListOnSale = shops.stream()
                 .flatMap(s -> s.getItemList().stream())
                 .map(Item::getName)
@@ -59,11 +56,6 @@ public class Exercise8Test extends ClassicOnlineStore {
                         (p1, p2) -> p1.longValue() <= p2.longValue() ? p1 : p2  // compare primitives
                 ));
 
-        /**
-         * Create a customer's name list including who are having enough money to buy all items they want which is on sale.
-         * Items that are not on sale can be counted as 0 money cost.
-         * If there is several same items with different prices, customer can choose the cheapest one.
-         */
         List<String> customerNameList = customers.stream()
                 .filter(c -> {
                     long total = c.getWantToBuy().stream()

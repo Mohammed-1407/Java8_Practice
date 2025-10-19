@@ -23,10 +23,6 @@ public class Exercise7Test extends ClassicOnlineStore {
     public void averageAge() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Create {@link IntStream} with customer ages by using {@link Stream#mapToInt}
-         * Then calculate the average of ages by using {@link IntStream#average}
-         */
         IntStream ageStream = customerList.stream().mapToInt(Customer::getAge);
         OptionalDouble average = ageStream.average();
 
@@ -38,10 +34,6 @@ public class Exercise7Test extends ClassicOnlineStore {
     public void howMuchToBuyAllItems() {
         List<Shop> shopList = this.mall.getShopList();
 
-        /**
-         * Create {@link LongStream} with all items' prices using {@link Stream#mapToLong}
-         * Then calculate the sum of prices using {@link LongStream#sum}
-         */
         LongStream priceStream = shopList.stream()
                 .flatMap(s -> s.getItemList().stream())
                 .mapToLong(i -> i.getPrice());

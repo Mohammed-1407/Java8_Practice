@@ -21,9 +21,6 @@ public class Exercise3Test extends ClassicOnlineStore {
     public void howManyItemsWanted() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Count how many items there are in {@link Customer.wantToBuy} using {@link Stream#count}
-         */
         long sum = customerList.stream()
                 .flatMap(c -> c.getWantToBuy().stream())
                 .count();
@@ -36,10 +33,6 @@ public class Exercise3Test extends ClassicOnlineStore {
     public void richestCustomer() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Find the richest customer's budget by using {@link Stream#max} and {@link Comparator#naturalOrder}
-         * Don't use {@link Stream#sorted}
-         */
         Comparator<Integer> comparator = Comparator.naturalOrder();
         Optional<Integer> richestCustomer = customerList.stream()
                 .map(Customer::getBudget)
@@ -54,10 +47,6 @@ public class Exercise3Test extends ClassicOnlineStore {
     public void youngestCustomer() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Find the youngest customer by using {@link Stream#min}
-         * Don't use {@link Stream#sorted}
-         */
         Comparator<Customer> comparator = Comparator.comparing(Customer::getAge);
         Optional<Customer> youngestCustomer = customerList.stream().min(comparator);
 

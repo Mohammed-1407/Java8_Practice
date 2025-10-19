@@ -37,10 +37,6 @@ public class Exercise9Test extends ClassicOnlineStore {
     public void simplestStringJoin() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Implement a {@link Collector} which can create a String with comma separated names shown in the assertion.
-         * The collector will be used by serial stream.
-         */
         Supplier<StringJoiner> supplier = () -> new StringJoiner(",");
         Collector<String, ?, String> toCsv = Collector.of(
                 supplier,
@@ -61,11 +57,6 @@ public class Exercise9Test extends ClassicOnlineStore {
     public void mapKeyedByItems() {
         List<Customer> customerList = this.mall.getCustomerList();
 
-        /**
-         * Implement a {@link Collector} which can create a {@link Map} with keys as item and
-         * values as {@link Set} of customers who are wanting to buy that item.
-         * The collector will be used by parallel stream.
-         */
         Collector<Customer, ?, Map<String, Set<String>>> toItemAsKey = Collector.of(
                 // supplier: concurrent map for parallel use
                 () -> new java.util.concurrent.ConcurrentHashMap<String, Set<String>>(),
